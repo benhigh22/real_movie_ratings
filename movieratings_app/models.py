@@ -41,8 +41,5 @@ class Review(models.Model):
     movie = models.ForeignKey(Movie)
     rating = models.IntegerField()
 
-"""
-movie = Movie.objects.get(pk=100)
-user = Rater.objects.get(pk=8)
-
-Review.objects.create(user=user, movie=movie, rating=3)"""
+    def __str__(self):
+        return "{} {}".format(self.movie, self.rating)
