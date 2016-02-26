@@ -10,8 +10,8 @@ from movieratings_app.models import Review, Rater, Movie
 def load_review_data(*args):
     with open("data/ml-100k/u.data") as reviews:
         for review in reviews.readlines():
-            tab = review.split('\t')
-            Review.objects.create(reviewer=Rater(tab[0]), movie=Movie(tab[1]), rating=tab[2])
+            line = review.split('\t')
+            Review.objects.create(reviewer=Rater(line[0]), movie=Movie(line[1]), rating=line[2])
 
 class Migration(migrations.Migration):
 
