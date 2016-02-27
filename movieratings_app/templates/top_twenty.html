@@ -6,11 +6,20 @@
     <title>Title</title>
 </head>
 <body>
+<div class="container">
+<table class="table table-striped">
+<th>Movie Title</th><th>Average Review Score</th>
+{% for movie in toptwenty %}
+<tr>
 
-{% for review in toptwenty %}
-   <div><a href={% url 'index_view' %} >{{ review }}</a></div>
+    <td><div><a href="{% url 'movie_detail' movie.id %}">{{ movie }}</a></div></td>
+    <td><div>{{ movie.avg_rating }}</div></td>
+
+</tr>
 {% endfor %}
 
+</table>
+</div>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
 </body>
 </html>

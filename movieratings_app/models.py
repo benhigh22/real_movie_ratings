@@ -36,6 +36,9 @@ class Movie(models.Model):
     western = models.BooleanField(default=0)
     avg_rating = models.FloatField(null=True)
 
+    def __str__(self):
+        return self.movie_title
+
 class Review(models.Model):
     reviewer = models.ForeignKey(Rater)
     movie = models.ForeignKey(Movie)

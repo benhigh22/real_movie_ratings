@@ -6,13 +6,18 @@
     <title>Title</title>
 </head>
 <body>
+<div class="container">
+<table class="table table-striped">
+<th>Movie Title</th>
 
-{% for review in all_movies %}
-   <div><a href={% url 'every_movie' %} >{{ review }}</a></div>
+{% for movie in movie %}
+    <tr>
+   <td><div><a href="{% url 'movie_detail' movie.id %}">{{ movie }}</a></div></td>
+    </tr>
 {% endfor %}
 
 
-
+</div>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
 </body>
 </html>

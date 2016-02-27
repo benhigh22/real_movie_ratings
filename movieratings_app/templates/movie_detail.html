@@ -5,12 +5,19 @@
     <title>Title</title>
 </head>
 <body>
-
-{{ movie.movie_title }}
-{{ average }}
+<div class="container">
+<table class="table table-striped">
+<th><div>{{ movie.movie_title }}</div></th>
 {% for reviewer in reviewers %}
-   <div>{{ reviewer.reviewer_id }} {{ reviewer.rating }} </div>
+    <tr>
+
+   <td><div>Reviewer: {{ reviewer.reviewer_id }} </div></td>
+   <td><div>Rating:{{ reviewer.rating }} </div></td>
+
+    </tr>
 {% endfor %}
 
+</table>
+</div>
 </body>
 </html>

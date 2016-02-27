@@ -12,32 +12,22 @@ def index_view(request):
 
 
 def top_twenty(request):
-    top_twenty_list = []
-    for item in Movie.objects.all():
-        top_twenty_list.append((item.movie_title, item.avg_rating))
-    top_20_sorted = sorted(top_twenty_list, key=lambda x: x[1], reverse=True)[:20]
-    return render(request, 'top_twenty.html', {'toptwenty': top_20_sorted})
+    top_twenty_sorted = Movie.objects.order_by('-avg_rating')[:20]
+    return render(request, 'top_twenty.html', {'toptwenty': top_twenty_sorted})
 
 
-
-"""def movie_detail(request, pk):
+def movie_detail(request, pk):
     reviewers = get_list_or_404(Review, movie_id=pk)
     movie = Movie.objects.get(id=pk)
-    average = Review.objects.filter(movie_id=pk).aggregate(Avg('rating'))
+    average = Movie.objects.filter(id=pk)
     return render(request, 'movie_detail.html', {
         'reviewers': reviewers,
         'average': average,
         'movie': movie})
-"""
+
 
 def every_movie_view(request):
-    average_rating = []
-    for item in Movie.objects.all():
-       average_rating.append((item.movie_title, (Review.objects.filter(movie=item).aggregate(Avg('rating')))))
-    movie_rating = []
-    for item in average_rating:
-       movie_rating.append((item[0], item[1]['rating__avg']))
-    all_movies = sorted(movie_rating, key=lambda x: x[0])
-    return render(request, 'everymovie.html', {'all_movies': all_movies})
+    every_movie = Movie.objects.all()
+    return render(request, 'everymovie.html', {'movie': every_movie})
 
 
