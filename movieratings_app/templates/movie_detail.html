@@ -7,13 +7,13 @@
 <body>
 <div class="container">
 <table class="table table-striped">
-<th><div>{{ movie.movie_title }}</div></th>
-{% for reviewer in reviewers %}
+<th><div>{{ movie.movie_title }}</div>
+<div>Average Review Score: {{ movie.avg_rating }}</div></th>
+
+{% for user in users %}
     <tr>
-
-   <td><div>Reviewer: {{ reviewer.reviewer_id }} </div></td>
-   <td><div>Rating:{{ reviewer.rating }} </div></td>
-
+   <td><div>User: {{ user.reviewer_id }} </div></td>
+   <td><div>Rating: {{ user.rating }} </div></td>
     </tr>
 {% endfor %}
 

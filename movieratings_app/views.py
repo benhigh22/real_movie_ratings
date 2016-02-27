@@ -1,9 +1,4 @@
-import operator
-
-from django.db.models import Avg
 from django.shortcuts import render, get_list_or_404
-
-# Create your views here.
 from movieratings_app.models import Movie, Review
 
 
@@ -17,13 +12,9 @@ def top_twenty(request):
 
 
 def movie_detail(request, pk):
-    reviewers = get_list_or_404(Review, movie_id=pk)
+    users = get_list_or_404(Review, movie_id=pk)
     movie = Movie.objects.get(id=pk)
-    average = Movie.objects.filter(id=pk)
-    return render(request, 'movie_detail.html', {
-        'reviewers': reviewers,
-        'average': average,
-        'movie': movie})
+    return render(request, 'movie_detail.html', {'users': users, 'movie': movie})
 
 
 def every_movie_view(request):
