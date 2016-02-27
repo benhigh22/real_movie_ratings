@@ -23,5 +23,6 @@ def every_movie_view(request):
 
 
 def every_user(request, pk):
-    rater_info = Rater.objects.filter(id=pk)
-    return render(request, 'everyuser.html', {'rater': rater_info})
+    rater_info = Rater.objects.get(id=pk)
+    rater_movie = Review.objects.filter(reviewer=rater_info.pk)
+    return render(request, 'everyuser.html', {'rater': rater_info, 'rater_movie': rater_movie})
