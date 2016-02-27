@@ -16,11 +16,12 @@ Including another URLconf
 from django.conf.urls import url
 from django.contrib import admin
 
-from movieratings_app.views import index_view, get_average
+from movieratings_app.views import index_view, top_twenty
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^$', index_view, name="index_view"),
-    url(r'^toptwenty', get_average, name="top_twenty")
+    url(r'^toptwenty', top_twenty, name="top_twenty")
+    #url(r'^moviedetail', movie_detail, name="movie_detail"),
+    #url(r'^everymovie', every_movie_view, name="every_movie")
 ]
-#url(r'^movie_detail', get_stuff, name="movie_detail")

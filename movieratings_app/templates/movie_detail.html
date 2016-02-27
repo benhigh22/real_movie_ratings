@@ -6,8 +6,10 @@
 </head>
 <body>
 
-{% for review in movie %}
-   <div>{{ review }}</div>
+{{ movie.movie_title }}
+{{ average }}
+{% for reviewer in reviewers %}
+   <div>{{ reviewer.reviewer_id }} {{ reviewer.rating }} </div>
 {% endfor %}
 
 </body>
