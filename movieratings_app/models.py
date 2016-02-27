@@ -9,6 +9,8 @@ class Rater(models.Model):
     occupation = models.CharField(max_length=50)
     zip_code = models.CharField(max_length=10)
 
+    def __str__(self):
+        return "{} {} {} {}".format(self.age, self.gender, self.occupation, self.zip_code)
 
 class Movie(models.Model):
     movie_title = models.CharField(max_length=30)

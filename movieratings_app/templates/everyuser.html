@@ -8,14 +8,15 @@
 <body>
 <div class="container">
 <table class="table table-striped">
-<th>Movie Title</th>
-
-{% for movie in movie %}
+<th>User Info</th>
+{% for rater in rater %}
     <tr>
-   <td><div><a href="{% url 'movie_detail' movie.id %}">{{ movie }}</a></div></td>
+    <td><div>Age: {{ rater.age}}</div></td>
+    <td><div>Gender: {{ rater.gender}}</div></td>
+    <td><div>Occupation: {{ rater.occupation}}</div></td>
+    <td><div>Zip Code: {{ rater.zip_code}}</div></td>
     </tr>
 {% endfor %}
-
 </table>
 </div>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>

@@ -2,6 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
     <title>Title</title>
 </head>
 <body>
@@ -12,12 +13,13 @@
 
 {% for user in users %}
     <tr>
-   <td><div>User: {{ user.reviewer_id }} </div></td>
+   <td><div><a href="{% url 'everyuser' user.reviewer_id %}">User: {{ user.reviewer_id }}</a></div></td>
    <td><div>Rating: {{ user.rating }} </div></td>
     </tr>
 {% endfor %}
 
 </table>
 </div>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
 </body>
 </html>

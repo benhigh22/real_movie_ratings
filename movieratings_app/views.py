@@ -1,5 +1,5 @@
 from django.shortcuts import render, get_list_or_404
-from movieratings_app.models import Movie, Review
+from movieratings_app.models import Movie, Review, Rater
 
 
 def index_view(request):
@@ -22,3 +22,6 @@ def every_movie_view(request):
     return render(request, 'everymovie.html', {'movie': every_movie})
 
 
+def every_user(request, pk):
+    rater_info = Rater.objects.filter(id=pk)
+    return render(request, 'everyuser.html', {'rater': rater_info})
