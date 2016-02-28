@@ -1,17 +1,30 @@
+{% load staticfiles %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+    <link href="{% static 'style.css' %}" rel="stylesheet">
     <title>Title</title>
 </head>
-<body>
+<body class="background">
+<div class="container">
 <ul class="nav nav-pills">
   <li role="presentation" class="active"><a href="{% url "index" %}">Home</a></li>
   <li role="presentation"><a href="{% url "top_twenty" %}">Top 20</a></li>
   <li role="presentation"><a href="{% url "every_movie" %}">All Movies</a></li>
 </ul>
 
+<div class="jumbotron">
+  <h1>Welcome!</h1>
+  <p>This is a site that displays the findings of a large movie review survey.
+  To see the Top 20 movies with the highest average rating, click the Top 20
+  button at the Top of this page. Or, if you're feeling adventurous,
+  click the All Movies button to see the entire list of every movie that
+  was reviewed! From either of these two options you can click links to find more
+  information. Enjoy!</p>
+</div>
+</div>
 
 
 
