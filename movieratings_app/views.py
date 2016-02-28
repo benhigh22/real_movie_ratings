@@ -31,8 +31,8 @@ def each_movie(request, pk):
     movie_info = Movie.objects.get(id=pk)
     return render(request, 'each_movie.html',{'movie': movie_info})
 
-def create_review(request, rating):
-    new_review = NewReview.objects.create(rating=rating)
+def create_review(request):
+    new_review = NewReview.objects.create()
     return render(request, "new_reviews.html", {
         "reviews": new_review
     })

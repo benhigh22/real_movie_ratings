@@ -17,7 +17,7 @@
             <form action="" method="post">
                 {% csrf_token %}
                 <div class="input-group">
-                    <input type="text" class="form-control" placeholder="Review" id="rating" name="rating">
+                    <input type="text" class="form-control" placeholder="Review">
                 </div>
                 <br>
                 <input class="btn btn-default" type="submit" value="Submit">
@@ -25,13 +25,13 @@
         </div>
     </div>
 
-    {% for review in reviews %}
+
         <div class="panel panel-default">
             <div class="panel-body">
-                {{ review.rating }}
+                {{ reviews }}
             </div>
         </div>
-    {% endfor %}
+
 
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
 </body>
