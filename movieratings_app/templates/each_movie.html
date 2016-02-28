@@ -16,10 +16,10 @@
 </ul>
 <table class="table table-striped">
 <th>Movie Title</th><th>Release Date</th><th>Video Release Date(if applicable)</th><th>IMDB Website Link</th>
-<tr><td><a href="{% url 'new_reviews' %}">{{ movie.movie_title }}</a></td>
+<tr><td>{{ movie.movie_title }}</td>
 <td>{{ movie.release_date }}</td>
 <td>{{ movie.video_release_date }}</td>
-<td>{{ movie.imdb }}</td></tr>
+<td><a href="{{ movie.imdb }}">{{ movie.imdb }}</a></td></tr>
 </table>
 </div>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
