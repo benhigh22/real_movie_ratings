@@ -48,3 +48,10 @@ class Review(models.Model):
 
     def __str__(self):
         return "{} {}".format(self.movie, self.rating)
+
+class NewReview(models.Model):
+    movie = models.ForeignKey(Movie)
+    rating = models.IntegerField()
+
+    def __str__(self):
+        return "{} {}".format(self.movie, self.rating)

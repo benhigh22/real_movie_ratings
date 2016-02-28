@@ -1,5 +1,5 @@
 from django.shortcuts import render, get_list_or_404
-from movieratings_app.models import Movie, Review, Rater
+from movieratings_app.models import Movie, Review, Rater, NewReview
 
 
 def index_view(request):
@@ -30,3 +30,9 @@ def every_user(request, pk):
 def each_movie(request, pk):
     movie_info = Movie.objects.get(id=pk)
     return render(request, 'each_movie.html',{'movie': movie_info})
+
+def create_review(request, rating):
+    new_review = NewReview.objects.create(rating=rating)
+    return render(request, "new_reviews.html", {
+        "reviews": new_review
+    })

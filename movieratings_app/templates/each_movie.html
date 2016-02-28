@@ -16,7 +16,7 @@
 </ul>
 <table class="table table-striped">
 <th>Movie Title</th><th>Release Date</th><th>Video Release Date(if applicable)</th><th>IMDB Website Link</th>
-<tr><td>{{ movie.movie_title }}</td>
+<tr><td><a href="{% url 'new_reviews' %}">{{ movie.movie_title }}</a></td>
 <td>{{ movie.release_date }}</td>
 <td>{{ movie.video_release_date }}</td>
 <td>{{ movie.imdb }}</td></tr>

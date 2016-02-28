@@ -16,7 +16,8 @@ Including another URLconf
 from django.conf.urls import url
 from django.contrib import admin
 
-from movieratings_app.views import index_view, top_twenty, every_movie_view, movie_detail, every_user, each_movie
+from movieratings_app.views import index_view, top_twenty, every_movie_view, movie_detail, every_user, each_movie, \
+    create_review
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
@@ -25,5 +26,6 @@ urlpatterns = [
     url(r'^(?P<pk>\d+)$', movie_detail, name="movie_detail"),
     url(r'^everymovie', every_movie_view, name="every_movie"),
     url(r'^user/(?P<pk>\d+)$', every_user, name="everyuser"),
-    url(r'^movie/(?P<pk>\d+)$', each_movie, name="each_movie")
+    url(r'^movie/(?P<pk>\d+)$', each_movie, name="each_movie"),
+    url(r'^newreviews', create_review, name="new_reviews")
 ]
