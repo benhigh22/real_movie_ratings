@@ -10,15 +10,16 @@
 <table class="table table-striped">
 <th>User Info:</th>
 <tr>
-    <td><div>Age: {{ rater.age}}</div></td>
-    <td><div>Gender: {{ rater.gender}}</div></td>
-    <td><div>Occupation: {{ rater.occupation}}</div></td>
-    <td><div>Zip Code: {{ rater.zip_code}}</div></td>
+    <td><div>Age: {{ rater.age}}
+    Gender: {{ rater.gender}}
+    Occupation: {{ rater.occupation}}
+    Zip Code: {{ rater.zip_code}}</div></td>
 </tr>
-<th>Movies This User Rated:</th>
+<th>Movies This User Rated:</th><th>Rating This User Gave:</th>
 {% for movie in rater_movie %}
     <tr>
-    <div><td>{{ movie.movie }}</td></div>
+    <div><td><a href="{% url 'each_movie' movie.movie_id %}">{{ movie.movie }}</a></td></div>
+    <div><td>{{ movie.rating }}</td></div>
 </tr>
 {% endfor %}
 

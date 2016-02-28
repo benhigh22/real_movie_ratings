@@ -6,15 +6,15 @@
     <title>Title</title>
 </head>
 <body>
-<ul class="nav nav-pills">
-  <li role="presentation" class="active"><a href="{% url "index" %}">Home</a></li>
-  <li role="presentation"><a href="{% url "top_twenty" %}">Top 20</a></li>
-  <li role="presentation"><a href="{% url "every_movie" %}">All Movies</a></li>
-</ul>
-
-
-
-
+<div class="container">
+<table class="table table-bordered">
+<th>Movie Title</th><th>Release Date</th><th>Video Release Date(if applicable)</th><th>IMDB Website Link</th>
+<tr><td>{{ movie.movie_title }}</td>
+<td>{{ movie.release_date }}</td>
+<td>{{ movie.video_release_date }}</td>
+<td>{{ movie.imdb }}</td></tr>
+</table>
+</div>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
 </body>
 </html>

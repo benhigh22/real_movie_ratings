@@ -12,7 +12,7 @@ def top_twenty(request):
 
 
 def movie_detail(request, pk):
-    users = get_list_or_404(Review, movie_id=pk)
+    users = Review.objects.filter(movie_id=pk)
     movie = Movie.objects.get(id=pk)
     return render(request, 'movie_detail.html', {'users': users, 'movie': movie})
 
@@ -26,3 +26,7 @@ def every_user(request, pk):
     rater_info = Rater.objects.get(id=pk)
     rater_movie = Review.objects.filter(reviewer=rater_info.pk)
     return render(request, 'everyuser.html', {'rater': rater_info, 'rater_movie': rater_movie})
+
+def each_movie(request, pk):
+    movie_info = Movie.objects.get(id=pk)
+    return render(request, 'each_movie.html',{'movie': movie_info})
