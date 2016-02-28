@@ -32,7 +32,11 @@ def each_movie(request, pk):
     return render(request, 'each_movie.html',{'movie': movie_info})
 
 def create_review(request):
-    new_review = NewReview.objects.create()
+    rating = request.POST.get('review')
+    movie = request.POST.get('new_movie')
+    if rating and movie:
+        NewReview.objects.create(rating=rating, movie=movie)
+    all_new_reviews = NewReview.objects.all()
     return render(request, "new_reviews.html", {
-        "reviews": new_review
+        "reviews": all_new_reviews
     })

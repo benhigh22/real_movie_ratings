@@ -7,32 +7,39 @@
     <link href="{% static 'style.css' %}" rel="stylesheet">
     <title>Title</title>
 </head>
-<body>
-
+<body class="background">
+<div class="container">
+<ul class="nav nav-pills">
+<li role="presentation"><a href="{% url "index" %}">Home</a></li>
+<li role="presentation"><a href="{% url "top_twenty" %}">Top 20</a></li>
+<li role="presentation"><a href="{% url "every_movie" %}">All Movies</a></li>
+<li role="presentation" class="active"><a href="{% url "new_reviews" %}">Create a New Review</a></li>
+</ul>
 <div class="panel panel-default">
-        <div class="panel-heading">
-            <h3 class="panel-title">Enter your review here. Give a score from 1 to 5.</h3>
-        </div>
-        <div class="panel-body">
-            <form action="" method="post">
-                {% csrf_token %}
-                <div class="input-group">
-                    <input type="text" class="form-control" placeholder="Review">
-                </div>
-                <br>
-                <input class="btn btn-default" type="submit" value="Submit">
-            </form>
-        </div>
-    </div>
+<div class="panel-heading">
+<h3 class="panel-title">Enter the movie to review, and a score from 1 to 5.</h3>
+</div>
+<div class="panel-body">
+<form action="" method="post">
+{% csrf_token %}
+<div class="input-group">
+<input type="text" class="form-control" placeholder="Movie" id="new_movie" name="new_movie">
+<input type="text" class="form-control" placeholder="Review" id="review" name="review">
+</div>
+<br>
+<input class="btn btn-primary" type="submit" value="Submit">
+</form>
+</div>
+</div>
+<table class="table table-striped">
 
-
-        <div class="panel panel-default">
-            <div class="panel-body">
-                {{ reviews }}
-            </div>
-        </div>
-
-
+<th>Movie Title</th><th>Rating</th>
+{% for review in reviews %}
+<tr><td>{{ review.movie }}</td>
+<td>{{ review.rating }}</td></tr>
+{% endfor %}
+</table>
+</div>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
 </body>
 </html>

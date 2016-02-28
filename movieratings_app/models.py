@@ -50,8 +50,11 @@ class Review(models.Model):
         return "{} {}".format(self.movie, self.rating)
 
 class NewReview(models.Model):
-    movie = models.ForeignKey(Movie)
+    movie = models.TextField()
     rating = models.IntegerField()
+
+    class Meta:
+        ordering = ["-id"]
 
     def __str__(self):
         return "{} {}".format(self.movie, self.rating)
