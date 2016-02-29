@@ -1,6 +1,7 @@
 from django.shortcuts import render, get_list_or_404
 from movieratings_app.models import Movie, Review, Rater, NewReview
-
+from django.core.urlresolvers import reverse
+from django.http import HttpResponseRedirect
 
 def index_view(request):
     return render(request, "index.html", {})
@@ -36,6 +37,7 @@ def create_review(request):
     movie = request.POST.get('new_movie')
     if rating and movie:
         NewReview.objects.create(rating=rating, movie=movie)
+        return HttpResponseRedirect(reverse('movieratings_app.views.create_review'))
     all_new_reviews = NewReview.objects.all()
     return render(request, "new_reviews.html", {
         "reviews": all_new_reviews
