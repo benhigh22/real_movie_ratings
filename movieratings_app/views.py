@@ -1,5 +1,6 @@
 import json
 
+from django.forms import model_to_dict
 from django.shortcuts import render
 from movieratings_app.models import Movie, Review, Rater, NewReview
 from django.core.urlresolvers import reverse
@@ -31,9 +32,11 @@ def every_user(request, pk):
     rater_movie = Review.objects.filter(reviewer=rater_info.pk)
     return render(request, 'everyuser.html', {'rater': rater_info, 'rater_movie': rater_movie})
 
+
 def each_movie(request, pk):
     movie_info = Movie.objects.get(id=pk)
     return render(request, 'each_movie.html',{'movie': movie_info})
+
 
 def create_review(request):
     rating = request.POST.get('review')
@@ -58,14 +61,34 @@ def get_single_rater(request, pk):
 
 
 def get_movie_view(request):
-    movie_list = list(Movie.objects.all().values())
-    return HttpResponse(json.dumps(movie_list), content_type="application/json")
+    if request.POST:
+        movie_title = request.POST.get('movie_title')
+        release_date = request.POST.get('release_date')
+        video_release_date = request.POST.get('video_release_date')
+        imdb = request.POST.get('imdb')
+        new_movie = Movie.objects.create(movie_title=movie_title, release_date=release_date,
+                             video_release_date=video_release_date, imdb=imdb)
+        movie_dict = model_to_dict(new_movie)
+        return HttpResponse(json.dumps(movie_dict), status=201, content_type="application/json")
+    else:
+        movie_list = list(Movie.objects.all().values())
+        return HttpResponse(json.dumps(movie_list), content_type="application/json")
 
 
 def get_single_movie(request, pk):
     single_movie = list(Movie.objects.filter(pk=pk).values())
     return HttpResponse(json.dumps(single_movie), content_type="application/json")
 
+
+def post_movie(request):
+    movie_title = request.POST.get('movie_title')
+    release_date = request.POST.get('release_date')
+    video_release_date = request.POST.get('video_release_date')
+    imdb = request.POST.get('imdb')
+    new_movie = Movie.objects.create(movie_title=movie_title, release_date=release_date,
+                         video_release_date=video_release_date, imdb=imdb)
+    movie_dict = model_to_dict(new_movie)
+    return HttpResponse(json.dumps(movie_dict), status=201, content_type="application/json")
 
 
 def get_review_view(request):
@@ -76,4 +99,6 @@ def get_review_view(request):
 def get_single_review(request, pk):
     single_review = list(Review.objects.filter(pk=pk).values())
     return HttpResponse(json.dumps(single_review), content_type="application/json")
+
+
 
