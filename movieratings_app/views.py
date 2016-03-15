@@ -51,8 +51,18 @@ def create_review(request):
 
 
 def get_rater_view(request):
-    rater_list = list(Rater.objects.all().values())
-    return HttpResponse(json.dumps(rater_list), content_type="application/json")
+    if request.POST:
+        age = request.POST.get('age')
+        gender = request.POST.get('gender')
+        occupation = request.POST.get('occupation')
+        zip_code = request.POST.get('zip_code')
+        new_rater = Rater.objects.create(age=age, gender=gender, occupation=occupation,
+                                         zip_code=zip_code)
+        rater_dict = model_to_dict(new_rater)
+        return HttpResponse(json.dumps(rater_dict), status=201, content_type="application/json")
+    else:
+        rater_list = list(Rater.objects.all().values())
+        return HttpResponse(json.dumps(rater_list), content_type="application/json")
 
 
 def get_single_rater(request, pk):
@@ -80,20 +90,17 @@ def get_single_movie(request, pk):
     return HttpResponse(json.dumps(single_movie), content_type="application/json")
 
 
-def post_movie(request):
-    movie_title = request.POST.get('movie_title')
-    release_date = request.POST.get('release_date')
-    video_release_date = request.POST.get('video_release_date')
-    imdb = request.POST.get('imdb')
-    new_movie = Movie.objects.create(movie_title=movie_title, release_date=release_date,
-                         video_release_date=video_release_date, imdb=imdb)
-    movie_dict = model_to_dict(new_movie)
-    return HttpResponse(json.dumps(movie_dict), status=201, content_type="application/json")
-
-
 def get_review_view(request):
-    review_list = list(Review.objects.all().values())
-    return HttpResponse(json.dumps(review_list), content_type="application/json")
+    if request.POST:
+        reviewer_id = request.POST.get('reviewer_id')
+        movie_id = request.POST.get('movie_id')
+        rating = request.POST.get('rating')
+        new_rating = Review.objects.create(reviewer_id=reviewer_id, movie_id=movie_id, rating=rating)
+        rating_dict = model_to_dict(new_rating)
+        return HttpResponse(json.dumps(rating_dict), status=201, content_type="application/json")
+    else:
+        review_list = list(Review.objects.all().values())
+        return HttpResponse(json.dumps(review_list), content_type="application/json")
 
 
 def get_single_review(request, pk):
